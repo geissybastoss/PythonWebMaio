@@ -3,53 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Aula 15-05</title>
+    <title>Aula 22-05</title>
 </head>
 <body>
-
-    <img src="/static/diamante.jpg" alt="diamante">
-
-    <h1>Titulo1</h1>
-    <h2>Titulo2</h2>
-    <h3>Titulo3</h3>
-    <h4>Titulo4</h4>
-    <h5>Titulo5</h5>
-    <h6>Titulo6</h6>
-
-    <h1>Lista de Times não ordenadas</h1>
-    <ul>
-        <li>São Paulo</li>
-        <li>Sport</li>
-        <li>Fluminense</li>
-        <li>Cruzeiro</li>
-        <li>Internacional</li>
-        <li>Nautico</li>
-
-    </ul>
-
-    <h1>Lista de Times ordenadas</h1>
-    <ol>
-        <li>São Paulo</li>
-        <li>Sport</li>
-        <li>Fluminense</li>
-        <li>Cruzeiro</li>
-        <li>Internacional</li>
-        <li>Nautico</li>
-
-    </ol>
-
-    <dl>
-        <dt>HTML</dt>
-        <dd>Linguagem de marcação de Hipertexyo</dd>
-        <dt>JAVA</dt>
-        <dd>Linguagem de programação</dd>
-    </dl>
-
-
-
-
-
-
+    {% for item in post%}
+        <h1>{{item.titulo}}</h1>
+        <h1>{{item.texto}}</h1>
+        <h1>{{item.data_criacao}}</h1>
+    {%endfor%}
 
 </body>
 </html>
+

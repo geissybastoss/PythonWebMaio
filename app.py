@@ -1,4 +1,4 @@
-from flask import Flask, render_template, g
+from flask import Flask, render_template, g, flash, url_for, request, redirect, abort, session
 import sqlite3
 
 DATABASE = "banco.bd"
@@ -28,13 +28,16 @@ def teardown_request(f):
 # Função para a crição da rota de exinição de post e busca dos post na tabela
 @app.route('/')
 def exibir_posts():
-    #sql = "SELECT titulo, texto, data_criacao from posts ORDER BY id DESC"
-    #resultado = g.bd.execute(sql)
+    sql = "SELECT titulo, texto, data_criacao from posts ORDER BY id DESC"
+    resultado = g.bd.execute(sql)
+    posts = []
 
-   posts = [ 
-           {"titulo":"Titulo 1", "texto":"Texto 1", "data_criacao":"21/05/2024"},
-           {"titulo":"Titulo 2", "texto":"Texto 2", "data_criacao":"22/05/2024"},
-           {"titulo":"Titulo 3", "texto":"Texto 3", "data_criacao":"23/05/2024"},
-           ]
-   return render_template('ola.html', post = posts)
+    for titulo, texto, data_criacao in resultado.fetchall():
+        posts.append({
+          "titulo": titulo,
+          "texto": texto,
+          "data_criacao": data_criacao  
+        })
+
+    return render_template('exibir_posts.html', post = posts)
 

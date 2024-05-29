@@ -1,23 +1,26 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="/static/estilo.css">
 </head>
 <body>
-    
-    <div class= "conteudo-principal">
-       <h1>Blog Aula Ocean</h1>
-            <div class="nav">
-                {%if not session.logado}
-                <a href="...">Login</a>
+    <div class = "conteudo_principal">
+        <h1>Blog Aula Ocean</h1>
+        <div class = "nav">
+            {%if not session.logado%}
+             <a href>Login</a>
+             {%else%}
+             <a href>Logout</a>
+             {%endif%}
+        </div>
+        {%for mensagem in get_flashed_mensages%}
+        <div class="flash"> {{mensagem}}</div>
+        {%endfor%}
+        {% block corpo%} {% endblock %}
+    </div> 
 
-                {%else%}
-                <a href="...">Logout</a>
-                
-                {%endif%}
-            </div>
     </div>
-
 </body>
 </html>

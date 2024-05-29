@@ -1,0 +1,16 @@
+{% extends "layout.html"%}
+
+{% block corpo%}
+
+<ul>
+   {%for post in posts %} 
+   <li>
+    <h2>{{post.titulo}}</h2>
+    {{post.texto}}
+    {{post.data_criacao}}
+   </li>
+   {%else%}
+   <li><em> Ainda não existem post no blog</em></li>
+   {%endfor%}
+</ul>
+{%endblock%}
